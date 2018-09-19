@@ -60,6 +60,8 @@ module SequelRails
       else
         ::Sequel.connect SequelRails.deep_symbolize_keys(normalized_config)
       end.tap { after_connect.call if after_connect.respond_to?(:call) }
+    rescue
+      puts 'Sequel rails did not found database'
     end
 
     private
